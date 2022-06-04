@@ -1,3 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://raluca20:raluca20@devconnector.ie4np1b.mongodb.net/?retryWrites=true&w=majority"
+  "mongoURI": "mongodb+srv://raluca20:raluca20@devconnector.ie4np1b.mongodb.net/?retryWrites=true&w=majority",
+  "jwtSecret": "mysecrettoken"
 }
