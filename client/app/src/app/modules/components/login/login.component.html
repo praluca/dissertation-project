@@ -1,0 +1,42 @@
+<div class="main-content">
+  <div class="left-side">
+    <div class="title">
+      Contul meu &nbsp;
+      <p class="app-name">Med on Demand</p>
+    </div>
+    <div class="sub-title">
+      Nu esti inregistrat?
+      <button mat-button (click)="onRedirectToRegister()">Cont Nou</button>
+    </div>
+    <div class="form">
+      <form [formGroup]="signinGroup">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            placeholder="popescuioana@example.com"
+            formControlName="email"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Parola</mat-label>
+          <input
+            matInput
+            placeholder="*****"
+            [type]="hide ? 'password' : 'text'"
+            formControlName="password"
+            required
+          />
+          <mat-icon matSuffix (click)="hide = !hide">{{
+            hide ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </mat-form-field>
+      </form>
+      <button class="btn-submit" mat-button (click)="onSubmit()">Submit</button>
+    </div>
+  </div>
+  <div class="right-side">
+    <img class="img-register" src="../../../../assets/img3.png" alt="" />
+  </div>
+</div>

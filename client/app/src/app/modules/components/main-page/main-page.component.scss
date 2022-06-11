@@ -1,0 +1,93 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #dbdffd;
+  height: 60px;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  top: 0px;
+  .app-title {
+    color: #242f9b;
+    font-weight: 700;
+    font-size: 18px;
+    margin-left: 30px;
+  }
+}
+.body {
+  height: 100vh;
+}
+.mat-button {
+  background-color: #242f9b !important ;
+  color: white;
+  margin-right: 20px;
+}
+.main-page-content {
+  margin-left: 150px;
+  margin-top: 150px;
+  margin-bottom: 175px;
+  display: flex;
+
+  height: 400px;
+  .banner-text {
+    width: 50%;
+    font-size: 40px;
+    letter-spacing: 1px;
+    font-family: "Nunito", sans-serif;
+    line-height: 1.5;
+    font-weight: 600;
+    color: #242f9b;
+  }
+}
+.logo-img {
+  height: 400px;
+  margin-left: 100px;
+}
+.sub-text-banner {
+  margin-top: 10px;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 500;
+}
+.question-text {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 27px;
+  color: #242f9b;
+  font-weight: 600;
+}
+.steps {
+  margin-top: 20px;
+  width: 50%;
+}
+.step {
+  margin-left: 200px;
+  margin-top: 70px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 70%;
+  .step-title {
+    font-weight: 600;
+    color: #242f9b;
+    font-size: 22px;
+    margin-left: 20px;
+    line-height: 2;
+    width: 100%;
+  }
+  .step-text {
+    font-size: 17px;
+    color: #242f9b;
+    margin-left: 20px;
+  }
+}
+.page-2-content {
+  display: flex;
+  justify-content: space-around;
+}
+.logo-img-2 {
+  height: 630px;
+  margin-top: 55px;
+}

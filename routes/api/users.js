@@ -12,6 +12,7 @@ router.post(
   "/",
   [
     check("name", "Name is required").not().isEmpty(),
+    check("phone", "Phone is required").not().isEmpty(),
     check("email", "Please include a valid email").isEmail(),
     check(
       "password",
@@ -24,7 +25,7 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, email, password } = req.body;
+    const { name, phone, email, password, status } = req.body;
     try {
       //see if user exists
       let user = await User.findOne({ email });
@@ -34,7 +35,7 @@ router.post(
           .json({ errors: [{ msg: "User already exists" }] });
       }
 
-      user = new User({ name, email, password });
+      user = new User({ name, phone, email, password, status });
 
       //encrypt password
       const salt = await bcrypt.genSalt(10);

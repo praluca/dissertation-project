@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 98%;
+}
+body {
+  margin: 0;
+  font-family: "Nunito", sans-serif !important;
+  background-color: #f9f9f9;
+}
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: #242f9b !important;
+}
+.mat-radio-outer-circle,
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: #242f9b;
+}
+.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+  background-color: #242f9b;
+}
+.mat-radio-button {
+  margin-right: 20px;
+}
+.mat-form-field-appearance-outline .mat-form-field-flex {
+  padding: 0 0.75em 0 0.75em;
+  margin-top: 10px !important;
+  position: relative !important;
+  width: 350px !important;
+}
