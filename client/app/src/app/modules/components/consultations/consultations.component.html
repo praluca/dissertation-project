@@ -1,0 +1,68 @@
+<app-top-menu></app-top-menu>
+<div class="home-content">
+  <app-navbar></app-navbar>
+  <div class="main-content">
+    <div class="title">ISTORIC CONSULTATII</div>
+    <div class="search-consultation">
+      <input
+        class="search-input"
+        type="text"
+        placeholder="Cauta o consultatie"
+        [(ngModel)]="searchText"
+        (keyup)="onSearchInput($event)"
+      />
+      <mat-icon class="search-icon" (click)="onSearch()">search</mat-icon>
+      <button class="btn-appointement" mat-button>Programare online</button>
+    </div>
+    <div class="content">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z0">
+        <ng-container matColumnDef="doctor_name">
+          <th mat-header-cell *matHeaderCellDef>Nume doctor</th>
+          <td mat-cell *matCellDef="let element">{{ element.doctor_name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="specialisation">
+          <th mat-header-cell *matHeaderCellDef>Specializare</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.specialisation }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="investigation">
+          <th mat-header-cell *matHeaderCellDef>Investigatii efectuate</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.investigation }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef>Data</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.date }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="diagnosis">
+          <th mat-header-cell *matHeaderCellDef>Diagnostic</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.diagnosis }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="settings">
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-icon>settings</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <mat-icon class="delete-icon" (click)="deleteConsultation()"
+              >delete</mat-icon
+            >
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </div>
+</div>

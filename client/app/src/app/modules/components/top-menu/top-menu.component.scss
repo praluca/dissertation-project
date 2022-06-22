@@ -1,0 +1,13 @@
+.top-menu-content {
+  width: calc(100vw - 60px);
+  background-color: #dbdffd;
+  height: 58px;
+  position: absolute;
+  margin-left: 60px;
+  display: flex;
+  justify-content: flex-end;
+}
+.mat-button {
+  color: #242f9b !important;
+  margin-right: 15px;
+}

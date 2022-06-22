@@ -1,0 +1,58 @@
+<div class="nav-content">
+  <div class="app-name">MoD</div>
+  <hr />
+  <div (click)="goToHome()" class="nav-option">
+    <mat-icon
+      matTooltip="Home"
+      matTooltipClass="tooltip"
+      matTooltipPosition="right"
+      [ngClass]="{ 'selected-option': isHomePage }"
+      >home</mat-icon
+    >
+  </div>
+  <div (click)="goToConsultations()" class="nav-option">
+    <mat-icon
+      matTooltip="Consultatii"
+      matTooltipClass="tooltip"
+      matTooltipPosition="right"
+      [ngClass]="{ 'selected-option': isConsultationsPage }"
+      >folder</mat-icon
+    >
+  </div>
+  <div class="nav-option" (click)="goToAppointments()">
+    <mat-icon
+      matTooltip="Programari"
+      matTooltipClass="tooltip"
+      matTooltipPosition="right"
+      [ngClass]="{ 'selected-option': isAppointmentsPage }"
+      >calendar_month</mat-icon
+    >
+  </div>
+  <div class="nav-option" (click)="goToVitalInformations()">
+    <mat-icon
+      matTooltip="Informatii Vitale"
+      matTooltipClass="tooltip"
+      matTooltipPosition="right"
+      [ngClass]="{ 'selected-option': isVitalInformationsPage }"
+      >favorite_border</mat-icon
+    >
+  </div>
+  <div class="nav-option" (click)="goToPayments()">
+    <mat-icon
+      matTooltip="Plati"
+      matTooltipClass="tooltip"
+      matTooltipPosition="right"
+      [ngClass]="{ 'selected-option': isPaymentsPage }"
+      >credit_card</mat-icon
+    >
+  </div>
+  <div class="nav-option" (click)="goToShop()">
+    <mat-icon
+      matTooltip="Farmacie"
+      matTooltipClass="tooltip"
+      matTooltipPosition="right"
+      [ngClass]="{ 'selected-option': isShopPage }"
+      >medication</mat-icon
+    >
+  </div>
+</div>

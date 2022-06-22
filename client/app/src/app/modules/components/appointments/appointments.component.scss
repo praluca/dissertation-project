@@ -1,0 +1,98 @@
+.home-content {
+  display: flex;
+}
+.main-content {
+  margin-top: 90px;
+  margin-left: 60px;
+}
+.title {
+  color: #242f9b;
+  font-weight: 700;
+  font-size: 22px;
+}
+.search-consultation {
+  margin-top: 20px;
+  width: calc(100vw - 150px);
+}
+.search-input {
+  height: 40px;
+  width: 300px;
+  border-radius: 15px;
+  box-sizing: border-box;
+  border: 1.5px solid #242f9b;
+  padding-left: 15px;
+  outline: none;
+  padding-right: 30px;
+}
+.search-input:focus {
+  border-color: #242f9b !important;
+}
+.search-icon {
+  color: #242f9b;
+  margin-left: -30px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.btn-appointement {
+  background-color: #242f9b;
+  color: white;
+  float: right;
+}
+.summary {
+  height: 100px;
+  width: 360px;
+  border: 1px solid #dbdffd;
+  margin-top: 20px;
+  border-radius: 10px;
+  display: flex;
+  margin-bottom: 20px;
+}
+.summary-content {
+  width: 120px;
+  margin: auto;
+  text-align: center;
+}
+.vertical-line {
+  height: 100%;
+  border: 0.1px solid #dbdffd;
+}
+.number,
+.number-2,
+.number-3 {
+  font-size: 25px;
+  color: #3ec70b;
+  font-weight: 650;
+}
+.text,
+.text-2,
+.text-3,
+.green {
+  margin-top: 10px;
+  color: #3ec70b;
+}
+.number-2,
+.text-2,
+.yellow {
+  color: #fac213 !important;
+}
+.number-3,
+.text-3,
+.red {
+  color: #f32424;
+}
+.content {
+  width: calc(100vw - 150px);
+  height: 350px;
+  overflow: auto;
+  border-radius: 15px;
+}
+table {
+  width: 100%;
+  height: 100%;
+}
+.yellow,
+.green,
+.red {
+  font-size: 15px;
+  padding-top: 15px;
+}

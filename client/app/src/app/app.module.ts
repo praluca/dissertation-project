@@ -15,6 +15,15 @@ import { EffectsModule } from '@ngrx/effects';
 import { CoreEffects } from './core/state/core.effects';
 import { HomeComponent } from './modules/components/home/home.component';
 import { LoginComponent } from './modules/components/login/login.component';
+import { NavbarComponent } from './modules/components/navbar/navbar.component';
+import { TopMenuComponent } from './modules/components/top-menu/top-menu.component';
+import { ConsultationsComponent } from './modules/components/consultations/consultations.component';
+import { AppointmentsComponent } from './modules/components/appointments/appointments.component';
+import { PaymentsComponent } from './modules/components/payments/payments.component';
+import { VitalInformationsComponent } from './modules/components/vital-informations/vital-informations.component';
+import { ShopComponent } from './modules/components/shop/shop.component';
+import { DeleteDialogComponent } from './shared/delete-dialog/delete-dialog.component';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 @NgModule({
   declarations: [
@@ -23,6 +32,14 @@ import { LoginComponent } from './modules/components/login/login.component';
     RegisterComponent,
     HomeComponent,
     LoginComponent,
+    NavbarComponent,
+    TopMenuComponent,
+    ConsultationsComponent,
+    AppointmentsComponent,
+    PaymentsComponent,
+    VitalInformationsComponent,
+    ShopComponent,
+    DeleteDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +56,7 @@ import { LoginComponent } from './modules/components/login/login.component';
       },
     }),
     EffectsModule.forRoot([CoreEffects]),
+    HighchartsChartModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

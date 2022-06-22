@@ -1,0 +1,72 @@
+.welcome-msg {
+  margin-left: 60px;
+  margin-top: 100px;
+  color: #242f9b;
+  font-size: 27px;
+  font-weight: 500;
+}
+.home-content {
+  display: flex;
+}
+.title {
+  //   margin-left: 60px;
+  margin-top: 90px;
+  color: #242f9b;
+  font-size: 22px;
+  font-weight: 600;
+}
+.doctor-info {
+  margin-top: 30px;
+  height: 320px;
+  width: 320px;
+  background-color: #dbdffd;
+  border-radius: 10px;
+  margin-right: 25px;
+}
+.content {
+  margin-left: 60px;
+  // margin-top: 90px;
+  height: calc(100vh - 100px);
+  overflow-y: auto;
+}
+.profile-img {
+  height: 80px;
+  border-radius: 60px;
+  margin: 15px;
+}
+.top-info {
+  display: flex;
+  align-items: center;
+}
+.doctor-name {
+  color: #242f9b;
+  font-size: 18px;
+  font-weight: 500;
+}
+.info-section {
+  margin-left: 15px;
+  color: #242f9b;
+  margin-bottom: 15px;
+}
+.low-title {
+  color: #646fd4;
+  font-size: 13px;
+  line-height: 2;
+  font-weight: bold;
+}
+.specialization {
+  font-size: 16px;
+  font-weight: 600;
+}
+.btn-container {
+  text-align: center;
+  margin-top: 20px;
+  .btn-appointement {
+    background-color: #242f9b !important;
+    color: white !important;
+  }
+}
+.top-doctors-list {
+  display: flex;
+  flex-wrap: wrap;
+}
