@@ -73,3 +73,18 @@ td.mat-footer-cell {
   background: #dbdffd !important;
   color: #242f9b !important;
 }
+
+.mat-expansion-panel-header-description,
+.mat-expansion-indicator::after {
+  color: #242f9b;
+}
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: #242f9b !important;
+}
+.mat-paginator,
+.mat-paginator-page-size .mat-select-trigger {
+  color: #242f9b !important;
+}
+.mat-paginator-container {
+  background: #f9f9f9 !important;
+}
