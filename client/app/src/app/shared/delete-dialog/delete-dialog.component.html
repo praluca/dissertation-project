@@ -1,10 +1,11 @@
 <div class="dialog-content">
   <div class="title" mat-dialog-title>STERGE</div>
   <div class="content">
-    Sunteti sigur ca doriti sa stergeti aceasta {{ data.name }} ?
+    Sunteti sigur ca doriti sa stergeti aceasta
+    {{ formatDate(data.data.date) }} ?
   </div>
   <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">NU</button>
-    <button mat-button class="yes-btn">DA</button>
+    <button mat-button (click)="onYesClick()" class="yes-btn">DA</button>
   </div>
 </div>

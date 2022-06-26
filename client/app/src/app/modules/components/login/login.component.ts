@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
     console.log('click', user);
     this.apiService.loginUser(user).subscribe((response: any) => {
       console.log('response', response);
+      this.localStorageService.set('user', response.user);
       this.localStorageService.set('x-auth-token', response.token);
       this.router.navigate(['/home']);
     });

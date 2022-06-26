@@ -17,6 +17,9 @@ app.use(cors());
 // define routes
 app.use("/api/user", require("./routes/api/users"));
 app.use("/api/auth", require("./routes/api/auth"));
+app.use("/api/doctors", require("./routes/api/doctors"));
+app.use("/api/consultations", require("./routes/api/consultations"));
+app.use("/api/investigations", require("./routes/api/investigation"));
 
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);

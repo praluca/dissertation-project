@@ -1,65 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { ApiService } from 'src/app/shared/api.service';
 import { DeleteDialogComponent } from 'src/app/shared/delete-dialog/delete-dialog.component';
-const ELEMENT_DATA: any = [
-  {
-    speciality: 'Cardiologie',
-    category: 'Investigatie laborator',
-    type: 'Medicina Muncii',
-    location: 'Screening',
-    price: '110',
-  },
-  {
-    speciality: 'Cardiologie',
-    category: 'Consultatie clinica',
-    type: 'Interventii Chirurgicale',
-    location: 'Screening',
-    price: '200',
-  },
-  {
-    speciality: 'Cardiologie',
-    category: 'Consultatie clinica',
-    type: 'Proceduri medicale',
-    location: 'Screening',
-    price: '500',
-  },
-  {
-    speciality: 'Cardiologie',
-    category: 'Consultatie clinica',
-    type: 'Medicina Muncii',
-    location: 'Screening',
-    price: '100',
-  },
-  {
-    speciality: 'Cardiologie',
-    category: 'Consultatie clinica',
-    type: 'Medicina Muncii',
-    location: 'Screening',
-    price: '150',
-  },
-  {
-    speciality: 'Cardiologie',
-    category: 'Investigatie laborator',
-    type: 'Imunologie',
-    location: 'Screening',
-    price: '150',
-  },
-  {
-    speciality: 'Cardiologie',
-    category: 'Investigatie laborator',
-    type: 'Proceduri medicale',
-    location: 'Screening',
-    price: '1000',
-  },
-  {
-    speciality: 'Cardiologie',
-    category: 'Investigatie laborator',
-    type: 'TOXICOLOGIE',
-    location: 'Screening',
-    price: '100',
-  },
-];
 
 @Component({
   selector: 'app-payments',
@@ -74,14 +17,17 @@ export class PaymentsComponent implements OnInit {
     'location',
     'price',
   ];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource: any;
   searchText: any;
   initialData: any;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private apiService: ApiService) {}
 
   ngOnInit(): void {
     this.initialData = this.dataSource;
+    this.apiService.getInvestigations().subscribe((response: any) => {
+      this.dataSource = new MatTableDataSource(response.investigations);
+    });
   }
 
   onSearch() {

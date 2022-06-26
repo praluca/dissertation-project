@@ -26,7 +26,7 @@ export class NavbarComponent implements OnInit {
       this.isPaymentsPage = true;
     } else if (this.router.url === '/vital-informations') {
       this.isVitalInformationsPage = true;
-    } else if (this.router.url === 'shop') {
+    } else if (this.router.url === '/shop') {
       this.isShopPage = true;
     }
   }
@@ -44,9 +44,9 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/payments']);
   }
   goToVitalInformations() {
-    this.router.navigate(['vital-informations']);
+    this.router.navigate(['/vital-informations']);
   }
   goToShop() {
-    this.router.navigate(['shop']);
+    this.router.navigate(['/shop']);
   }
 }
