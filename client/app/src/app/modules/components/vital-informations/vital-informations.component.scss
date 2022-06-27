@@ -44,7 +44,7 @@
 }
 .vertical-line {
   margin-top: -20px;
-  height: calc(100vh - 250px);
+  height: calc(100vh - 150px);
   border: 0.1px solid #242f9b;
 }
 .info-title-2 {
@@ -67,4 +67,41 @@
   text-align: center;
   margin: 30px;
   height: 250px;
+}
+.no-data {
+  color: #051367;
+  text-align: center;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-container-chart {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.info-input {
+  height: 25px;
+  border: 1px solid #242f9b;
+  font-size: 14px;
+  border-radius: 5px;
+  height: 35px;
+  width: 345px;
+  background-color: #f9f9f9;
+}
+.blood-type-container {
+  color: #051367 !important;
+  width: 100px;
+  font-size: 12px;
+}
+.modify-btn-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-right: 110px;
+
+  .cancel-btn {
+    height: 36px;
+  }
 }

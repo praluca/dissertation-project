@@ -20,6 +20,7 @@ app.use("/api/auth", require("./routes/api/auth"));
 app.use("/api/doctors", require("./routes/api/doctors"));
 app.use("/api/consultations", require("./routes/api/consultations"));
 app.use("/api/investigations", require("./routes/api/investigation"));
+app.use("/api/vitalinformations", require("./routes/api/vitalinformations"));
 
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);

@@ -35,12 +35,19 @@ export class ApiService {
     const url = 'http://localhost:3000/api/consultations/' + id;
     return this.http.get(url, { headers: this.headers });
   }
+
   deleteConsultation(id: any) {
     const url = 'http://localhost:3000/api/consultations/' + id;
     return this.http.delete(url, { headers: this.headers });
   }
+
   getInvestigations() {
     const url = 'http://localhost:3000/api/investigations';
+    return this.http.get(url, { headers: this.headers });
+  }
+
+  getVitalInformations(id: any) {
+    const url = 'http://localhost:3000/api/vitalinformations/' + id;
     return this.http.get(url, { headers: this.headers });
   }
 }
