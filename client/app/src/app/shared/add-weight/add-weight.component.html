@@ -1,0 +1,35 @@
+<div class="dialog-content">
+  <div *ngIf="data.type === 'WEIGHT'">
+    <div class="title" mat-dialog-title>ADAUGA GREUTATE</div>
+    <div class="content">In campul de mai jos adaugati greutatea:</div>
+    <div>
+      <input type="text" class="info-input" [(ngModel)]="currentWeight" />
+    </div>
+  </div>
+
+  <div *ngIf="data.type === 'TENSION'">
+    <div class="title" mat-dialog-title>ADAUGA TENSIUNEA</div>
+    <div class="content">
+      In campurile de mai jos adaugati valorile tensiunii arteriale:
+    </div>
+    <div>
+      <div class="label">Tensiunea Arteriala Sistolica</div>
+      <input
+        type="text"
+        class="info-input"
+        [(ngModel)]="currentSistolicTension"
+      />
+      <div class="label">Tensiunea Arteriala Sistolica</div>
+      <input
+        type="text"
+        class="info-input"
+        [(ngModel)]="currentDiastolicTension"
+      />
+    </div>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">NU</button>
+    <button mat-button (click)="onYesClick()" class="yes-btn">DA</button>
+  </div>
+</div>

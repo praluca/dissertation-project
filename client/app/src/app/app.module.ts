@@ -24,6 +24,7 @@ import { VitalInformationsComponent } from './modules/components/vital-informati
 import { ShopComponent } from './modules/components/shop/shop.component';
 import { DeleteDialogComponent } from './shared/delete-dialog/delete-dialog.component';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { AddWeightComponent } from './shared/add-weight/add-weight.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
     VitalInformationsComponent,
     ShopComponent,
     DeleteDialogComponent,
+    AddWeightComponent,
   ],
   imports: [
     BrowserModule,

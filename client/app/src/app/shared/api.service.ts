@@ -50,4 +50,12 @@ export class ApiService {
     const url = 'http://localhost:3000/api/vitalinformations/' + id;
     return this.http.get(url, { headers: this.headers });
   }
+  editVitalInformations(id: any, body: any) {
+    const url = 'http://localhost:3000/api/vitalinformations/' + id;
+    return this.http.patch(url, body, { headers: this.headers });
+  }
+  addVitalInformations(userId: any, body: any) {
+    const url = 'http://localhost:3000/api/vitalinformations/' + userId;
+    return this.http.post(url, body, { headers: this.headers });
+  }
 }

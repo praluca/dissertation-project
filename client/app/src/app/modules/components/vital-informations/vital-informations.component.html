@@ -9,7 +9,7 @@
         <div class="info">
           <div class="info-content">
             Greutate:
-            <div *ngIf="weight === 0 && !isEditingMode" class="info-value">
+            <div *ngIf="weight == 0 && !isEditingMode" class="info-value">
               -
             </div>
             <div *ngIf="weight > 0 && !isEditingMode" class="info-value">
@@ -43,16 +43,10 @@
           </div>
           <div class="info-content">
             Grupa de sange:
-            <div
-              *ngIf="bloodType.length === 0 && !isEditingMode"
-              class="info-value"
-            >
+            <div *ngIf="bloodType === '' && !isEditingMode" class="info-value">
               -
             </div>
-            <div
-              *ngIf="bloodType.length > 0 && !isEditingMode"
-              class="info-value"
-            >
+            <div *ngIf="bloodType !== '' && !isEditingMode" class="info-value">
               {{ bloodType }}
             </div>
             <div class="blood-type-container" *ngIf="isEditingMode">
@@ -72,10 +66,8 @@
           </div>
           <div class="info-content">
             Rh:
-            <div *ngIf="rh.length === 0 && !isEditingMode" class="info-value">
-              -
-            </div>
-            <div *ngIf="rh.length > 0 && !isEditingMode" class="info-value">
+            <div *ngIf="rh === '' && !isEditingMode" class="info-value">-</div>
+            <div *ngIf="rh !== '' && !isEditingMode" class="info-value">
               {{ rh }}
             </div>
             <div class="blood-type-container" *ngIf="isEditingMode">
@@ -91,16 +83,10 @@
           </div>
           <div class="info-content">
             Alergii:
-            <div
-              *ngIf="allergies.length === 0 && !isEditingMode"
-              class="info-value"
-            >
+            <div *ngIf="allergies === '' && !isEditingMode" class="info-value">
               -
             </div>
-            <div
-              *ngIf="allergies.length > 0 && !isEditingMode"
-              class="info-value"
-            >
+            <div *ngIf="allergies !== '' && !isEditingMode" class="info-value">
               {{ allergies }}
             </div>
             <div>
@@ -117,14 +103,14 @@
               *ngIf="
                 weight === 0 &&
                 height === 0 &&
-                bloodType.length === 0 &&
-                rh.length === 0 &&
-                allergies.length === 0 &&
+                bloodType === '' &&
+                rh === '' &&
+                allergies === '' &&
                 !isEditingMode
               "
               mat-button
               class="more-info-btn"
-              (click)="addInfo()"
+              (click)="modifyInfo()"
             >
               Adauga informatii
             </button>
@@ -132,9 +118,9 @@
               *ngIf="
                 (weight !== 0 ||
                   height !== 0 ||
-                  bloodType.length !== 0 ||
-                  rh.length !== 0 ||
-                  allergies.length !== 0) &&
+                  bloodType !== '' ||
+                  rh !== '' ||
+                  allergies !== '') &&
                 !isEditingMode
               "
               mat-button
@@ -143,6 +129,14 @@
             >
               Modifica informatii
             </button>
+            <!-- <button
+              *ngIf="hasNoData && isEditingMode"
+              mat-button
+              class="more-info-btn"
+              (click)="addInfo()"
+            >
+              Modifica informatii
+            </button> -->
           </div>
           <div class="modify-btn-container">
             <button
@@ -157,7 +151,7 @@
               *ngIf="isEditingMode"
               mat-button
               class="more-info-btn"
-              (click)="modifyInfo()"
+              (click)="applyChanges()"
             >
               Aplica modificari
             </button>
@@ -167,27 +161,40 @@
       <div class="vertical-line"></div>
       <div class="info">
         <div class="info-title-2">ISTORIC GREUTATE</div>
-        <div class="no-data" *ngIf="weightHistory.length === 0">
+        <div
+          class="no-data"
+          *ngIf="weightHistory && weightHistory.length === 0"
+        >
           No records found
         </div>
-        <div *ngIf="weightHistory.length > 0" class="chart">
+        <div *ngIf="weightHistory && weightHistory.length > 0" class="chart">
           <highcharts-chart
             [Highcharts]="Highcharts"
             [options]="weightChartOptions"
+            [(update)]="updateFlag"
             style="width: 100%; height: 300px; display: block"
           ></highcharts-chart>
         </div>
         <div class="btn-container-chart">
-          <button mat-button class="more-info-btn">Adauga greutate</button>
+          <button
+            mat-button
+            class="more-info-btn"
+            (click)="addWeight('WEIGHT')"
+          >
+            Adauga greutate
+          </button>
         </div>
       </div>
       <div class="vertical-line"></div>
       <div class="info">
         <div class="info-title-2">ISTORIC TENSIUNE</div>
-        <div class="no-data" *ngIf="tensionHistory.length === 0">
+        <div
+          class="no-data"
+          *ngIf="tensionHistory && tensionHistory.length === 0"
+        >
           No records found
         </div>
-        <div class="chart" *ngIf="tensionHistory.length > 0">
+        <div class="chart" *ngIf="tensionHistory && tensionHistory.length > 0">
           <highcharts-chart
             [Highcharts]="Highcharts"
             [options]="tensionChartOptions"
@@ -197,18 +204,11 @@
         </div>
         <div class="btn-container-chart">
           <button
-            *ngIf="tensionHistory.length === 0"
             mat-button
             class="more-info-btn"
+            (click)="addWeight('TENSION')"
           >
-            Adauga valori tensiune
-          </button>
-          <button
-            *ngIf="tensionHistory.length > 0"
-            mat-button
-            class="more-info-btn"
-          >
-            Adauga valoare noua tensiune
+            Adauga valoari tensiune
           </button>
         </div>
       </div>
