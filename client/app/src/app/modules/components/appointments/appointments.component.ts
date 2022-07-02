@@ -1,70 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-const ELEMENT_DATA: any = [
-  {
-    doctor_name: 'Robert',
-    specialisation: 'Medicina Muncii',
-    time: '15:30',
-    date: '10/10/2021',
-    status: 'programare onorata',
-  },
-  {
-    doctor_name: 'Popa Raluca',
-    specialisation: 'Medicina Muncii',
-    time: '15:30',
-    date: '10/10/2021',
-    status: 'programare neonorata',
-  },
-  {
-    doctor_name: 'Popa Raluca',
-    specialisation: 'Medicina Muncii',
-    time: '15:30',
-    date: '10/10/2021',
-    status: 'programare viitoare',
-  },
-  {
-    doctor_name: 'Robert',
-    specialisation: 'Medicina Muncii',
-    time: '15:30',
-    date: '10/10/2021',
-    status: 'programare onorata',
-  },
-  {
-    doctor_name: 'Popa Raluca',
-    specialisation: 'Medicina Muncii',
-    time: '15:30',
-    date: '10/10/2021',
-    status: 'programare neonorata',
-  },
-  {
-    doctor_name: 'Popa Raluca',
-    specialisation: 'Medicina Muncii',
-    time: '15:30',
-    date: '10/10/2021',
-    status: 'programare viitoare',
-  },
-  {
-    doctor_name: 'Robert',
-    specialisation: 'Medicina Muncii',
-    time: '15:30',
-    date: '10/10/2021',
-    status: 'programare onorata',
-  },
-  {
-    doctor_name: 'Popa Raluca',
-    specialisation: 'Medicina Muncii',
-    time: '15:30',
-    date: '10/10/2021',
-    status: 'programare neonorata',
-  },
-  {
-    doctor_name: 'Popa Raluca',
-    specialisation: 'Medicina Muncii',
-    time: '14:20',
-    date: '10/10/2021',
-    status: 'programare viitoare',
-  },
-];
+import { ApiService } from 'src/app/shared/api.service';
+import { LocalStorageService } from 'src/app/shared/local-storage.service';
+
 @Component({
   selector: 'app-appointments',
   templateUrl: './appointments.component.html',
@@ -73,18 +11,41 @@ const ELEMENT_DATA: any = [
 export class AppointmentsComponent implements OnInit {
   searchText: any = '';
   displayedColumns: string[] = [
-    'doctor_name',
+    'doctorName',
     'specialisation',
     'date',
-    'time',
-    'status',
+    'hour',
+    'state',
     'settings',
   ];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource: any;
+  honoredAppointements = 0;
+  futureAppointements = 0;
+  unfulfilledAppointemets = 0;
+  currentUserId = '';
+  constructor(
+    private apiService: ApiService,
+    private localStorage: LocalStorageService
+  ) {}
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.currentUserId = this.localStorage.get('user')._id;
+    this.apiService
+      .getAppointements(this.currentUserId)
+      .subscribe((response: any) => {
+        this.dataSource = new MatTableDataSource(response.appointements);
+        console.log('response', response);
+        response.appointements.forEach((element: any) => {
+          if (element.state === 'viitoare') {
+            this.futureAppointements++;
+          } else if (element.state === 'onorata') {
+            this.honoredAppointements++;
+          } else {
+            this.unfulfilledAppointemets++;
+          }
+        });
+      });
+  }
   onSearch() {
     console.log('search');
   }

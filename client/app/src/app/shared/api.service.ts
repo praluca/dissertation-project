@@ -58,4 +58,9 @@ export class ApiService {
     const url = 'http://localhost:3000/api/vitalinformations/' + userId;
     return this.http.post(url, body, { headers: this.headers });
   }
+
+  getAppointements(userId: any) {
+    const url = 'http://localhost:3000/api/appointements/' + userId;
+    return this.http.get(url, { headers: this.headers });
+  }
 }
