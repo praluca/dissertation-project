@@ -25,6 +25,10 @@ import { ShopComponent } from './modules/components/shop/shop.component';
 import { DeleteDialogComponent } from './shared/delete-dialog/delete-dialog.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { AddWeightComponent } from './shared/add-weight/add-weight.component';
+import { AddAppointementComponent } from './modules/components/add-appointement/add-appointement.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +46,8 @@ import { AddWeightComponent } from './shared/add-weight/add-weight.component';
     ShopComponent,
     DeleteDialogComponent,
     AddWeightComponent,
+    AddAppointementComponent,
+    ConfirmationDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,8 +65,10 @@ import { AddWeightComponent } from './shared/add-weight/add-weight.component';
     }),
     EffectsModule.forRoot([CoreEffects]),
     HighchartsChartModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
-  providers: [],
+  providers: [MatDatepickerModule, MatNativeDateModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

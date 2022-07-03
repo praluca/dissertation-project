@@ -12,7 +12,9 @@
         (keyup)="onSearchInput($event)"
       />
       <mat-icon class="search-icon" (click)="onSearch()">search</mat-icon>
-      <button class="btn-appointement" mat-button>Programare online</button>
+      <button class="btn-appointement" (click)="onAddAppointement()" mat-button>
+        Programare online
+      </button>
     </div>
     <div class="summary">
       <div class="summary-content">

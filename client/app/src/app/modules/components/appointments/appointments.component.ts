@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/shared/api.service';
 import { LocalStorageService } from 'src/app/shared/local-storage.service';
 
@@ -25,7 +27,8 @@ export class AppointmentsComponent implements OnInit {
   currentUserId = '';
   constructor(
     private apiService: ApiService,
-    private localStorage: LocalStorageService
+    private localStorage: LocalStorageService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -51,5 +54,8 @@ export class AppointmentsComponent implements OnInit {
   }
   onSearchInput(event: any) {
     console.log('search input');
+  }
+  onAddAppointement() {
+    this.router.navigate(['/add-appointement']);
   }
 }

@@ -88,3 +88,20 @@ td.mat-footer-cell {
 .mat-paginator-container {
   background: #f9f9f9 !important;
 }
+app-add-appointement {
+  .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: #dbdffd !important;
+  }
+  .mat-select-arrow {
+    color: #242f9b;
+  }
+  .mat-form-field-label {
+    color: #242f9b;
+  }
+  mat-datepicker-toggle {
+    color: #242f9b !important;
+  }
+  .mat-hint {
+    color: #242f9b;
+  }
+}

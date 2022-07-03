@@ -1,0 +1,11 @@
+<div class="dialog-content">
+  <div class="title" mat-dialog-title>CONFIRMA</div>
+  <div class="content">
+    Sunteti sigur ca doriti sa va programati pe {{ data.date }} la ora
+    {{ data.hour }} ?
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">NU</button>
+    <button mat-button (click)="onYesClick()" class="yes-btn">DA</button>
+  </div>
+</div>

@@ -3,6 +3,7 @@ const router = express.Router();
 const auth = require("../../middleware/auth");
 const { check, validationResult } = require("express-validator/check");
 const Appointements = require("../../models/Appointement");
+const DoctorAppointements = require("../../models/DoctorsAppointements");
 
 router.get("/:id", auth, async (req, res) => {
   try {
@@ -21,7 +22,7 @@ router.get("/:id", auth, async (req, res) => {
     res.status(500).send("Server error");
   }
 });
-router.post("/:id", auth, async (req, res) => {
+router.post("/:id/:doctorId", auth, async (req, res) => {
   const { doctorName, specialisation, date, hour } = req.body;
   try {
     let pacientId = req.params.id;
@@ -35,6 +36,24 @@ router.post("/:id", auth, async (req, res) => {
       pacientId,
     });
     await consultation.save();
+    let doctorApps = await DoctorAppointements.find();
+    doctorApps.forEach(async (elem) => {
+      if (elem.doctorId == req.params.doctorId) {
+        console.log(
+          "hereeeeeee",
+          req.params.doctorId,
+          elem.doctorId == req.params.doctorId
+        );
+        elem.appointements.forEach((e) => {
+          if (e.date == date) {
+            e.hour.push(date);
+          } else {
+            elem.appointements.push({ date: date, hour: [hour] });
+          }
+        });
+        await elem.save();
+      }
+    });
     res.send({ consultation: consultation });
   } catch (err) {
     console.error(err.message);
@@ -57,7 +76,6 @@ router.patch("/change-state/:id", auth, async (req, res) => {
 });
 router.delete("/:appointementId", auth, async (req, res) => {
   try {
-    console.log("id", req.params.id);
     await Appointements.deleteOne({ _id: req.params.appointementId });
     res.json({ deleted: true });
   } catch (err) {

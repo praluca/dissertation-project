@@ -230,7 +230,7 @@ export class VitalInformationsComponent implements OnInit {
     };
     const dialogRef = this.dialog.open(AddWeightComponent, {
       width: '450px',
-      height: type === 'WEIGHT' ? '280px' : '400px',
+      height: type === 'WEIGHT' ? '280px' : '410px',
       data: { data: newInfo, type: type },
     });
     dialogRef.afterClosed().subscribe((response) => {

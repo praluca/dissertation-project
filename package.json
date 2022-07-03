@@ -21,7 +21,9 @@
     "highcharts-angular": "^3.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.3.5",
-    "request": "^2.88.2"
+    "querystring": "^0.2.1",
+    "request": "^2.88.2",
+    "stripe": "^9.11.0"
   },
   "devDependencies": {
     "concurrently": "^7.2.1",

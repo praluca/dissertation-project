@@ -20,7 +20,10 @@ export class NavbarComponent implements OnInit {
       this.isHomePage = true;
     } else if (this.router.url === '/consultations') {
       this.isConsultationsPage = true;
-    } else if (this.router.url === '/appointments') {
+    } else if (
+      this.router.url === '/appointments' ||
+      this.router.url === '/add-appointement'
+    ) {
       this.isAppointmentsPage = true;
     } else if (this.router.url === '/payments') {
       this.isPaymentsPage = true;

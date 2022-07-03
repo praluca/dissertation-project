@@ -63,4 +63,26 @@ export class ApiService {
     const url = 'http://localhost:3000/api/appointements/' + userId;
     return this.http.get(url, { headers: this.headers });
   }
+
+  searchDoctorsAppointements(
+    specialisationValue: any,
+    locationValue: any,
+    dateValue: any
+  ) {
+    const url = 'http://localhost:3000/api/doctors';
+    return this.http.get(url, {
+      params: {
+        specialisation: specialisationValue,
+        location: locationValue,
+        date: dateValue,
+      },
+      headers: this.headers,
+    });
+  }
+
+  addAppointements(body: any, userId: any, doctorId: any) {
+    const url =
+      'http://localhost:3000/api/appointements/' + userId + '/' + doctorId;
+    return this.http.post(url, body, { headers: this.headers });
+  }
 }

@@ -1,0 +1,66 @@
+<app-top-menu></app-top-menu>
+<div class="home-content">
+  <app-navbar></app-navbar>
+  <div class="main-content">
+    <div class="title">ADAUGA PROGRAMARE</div>
+    <div class="text">
+      Pentru a incepe cautarea, te rugam sa selectezi din criteriile
+      disponibile.
+    </div>
+    <div class="fields">
+      <mat-form-field appearance="fill">
+        <mat-label>Selectati specializarea</mat-label>
+        <mat-select [(ngModel)]="selectedSpecialisation" name="food">
+          <mat-option *ngFor="let spc of specialisations" [value]="spc.value">
+            {{ spc.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Selectati locatia</mat-label>
+        <mat-select [(ngModel)]="selectedLocation" name="food">
+          <mat-option *ngFor="let loc of locations" [value]="loc.value">
+            {{ loc.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Selectati data pentru care doriti programarea</mat-label>
+        <input
+          matInput
+          [matDatepickerFilter]="myFilter"
+          [matDatepicker]="picker"
+          (dateChange)="selectedDate('change', $event)"
+        />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <button mat-button (click)="searchAppointements()">Cauta</button>
+    </div>
+    <div class="top-doctors-list">
+      <div class="doctor-info" *ngFor="let doctor of responseArray">
+        <div class="top-info">
+          <img class="profile-img" src="../../../../assets/img4.jpg" alt="" />
+          <div>
+            <div class="doctor-name">Dr. {{ doctor.doctorName }}</div>
+            <div class="review">9/10</div>
+          </div>
+        </div>
+        <div class="info-section">
+          <div class="low-title">Specializare</div>
+          <div class="specialization">{{ doctor.specialisation }}</div>
+        </div>
+        <div class="info-section">
+          <div class="low-title">Locatie</div>
+          <div class="specialization">{{ doctor.location }}</div>
+        </div>
+        <div class="test">
+          <div class="hours-container" *ngFor="let hour of doctor.dispHour">
+            <div (click)="selectHour(doctor, hour)">{{ hour }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
