@@ -85,4 +85,9 @@ export class ApiService {
       'http://localhost:3000/api/appointements/' + userId + '/' + doctorId;
     return this.http.post(url, body, { headers: this.headers });
   }
+
+  getProducts() {
+    const url = 'http://localhost:3000/api/products';
+    return this.http.get(url, { headers: this.headers });
+  }
 }

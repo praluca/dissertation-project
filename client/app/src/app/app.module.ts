@@ -29,6 +29,8 @@ import { AddAppointementComponent } from './modules/components/add-appointement/
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
+import { InlineSVGModule } from 'ng-inline-svg';
+import { StripePaymentComponent } from './shared/stripe-payment/stripe-payment.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confir
     AddWeightComponent,
     AddAppointementComponent,
     ConfirmationDialogComponent,
+    StripePaymentComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,6 +70,7 @@ import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confir
     HighchartsChartModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    InlineSVGModule,
   ],
   providers: [MatDatepickerModule, MatNativeDateModule],
   bootstrap: [AppComponent],

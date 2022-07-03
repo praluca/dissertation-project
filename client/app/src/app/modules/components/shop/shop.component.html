@@ -1,11 +1,38 @@
 <div class="top-menu-content">
-  <mat-icon class="favorite">favorite</mat-icon>
-  <mat-icon class="shopping-cart">shopping_cart</mat-icon>
+  <mat-icon
+    class="shopping-cart"
+    [matBadge]="cartProducts.length"
+    matBadgeColor="warn"
+    (click)="displayCart()"
+    >shopping_cart</mat-icon
+  >
   <button mat-button [matMenuTriggerFor]="menu">Popa Raluca</button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item>About</button>
     <button mat-menu-item>Logout</button>
   </mat-menu>
+</div>
+<div *ngIf="dispCart && cartProducts.length > 0" class="cart">
+  <div class="product-cart" *ngFor="let prod of cartProducts; let i = index">
+    <img
+      class="cart-img"
+      [src]="buildProductPicture(prod.product.img)"
+      alt=""
+    />
+    <div class="prod-details">
+      <div class="prod-name">{{ prod.product.productName }}</div>
+      <div class="prod-price">
+        {{ prod.product.price }} LEI - {{ prod.quantity }} BUC.
+      </div>
+    </div>
+    <button class="cancel" (click)="removeItem(i)" mat-button>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="btn-pay-container">
+    <hr class="hr-line" />
+    <button class="pay" (click)="checkout()" mat-button>Plata</button>
+  </div>
 </div>
 <div class="home-content">
   <app-navbar></app-navbar>
@@ -31,19 +58,21 @@
             <mat-expansion-panel-header>
               <mat-panel-title> Categorii </mat-panel-title>
             </mat-expansion-panel-header>
-            <section class="example-section" [formGroup]="toppings">
+            <section class="example-section" [formGroup]="category">
               <p>
-                <mat-checkbox formControlName="pepperoni"
-                  >Pepperoni</mat-checkbox
+                <mat-checkbox formControlName="category1"
+                  >Afectiuni Cardiovasculare</mat-checkbox
                 >
               </p>
               <p>
-                <mat-checkbox formControlName="extracheese"
-                  >Extra Cheese</mat-checkbox
+                <mat-checkbox formControlName="category2"
+                  >Afectiuni Respiratorii</mat-checkbox
                 >
               </p>
               <p>
-                <mat-checkbox formControlName="mushroom">Mushroom</mat-checkbox>
+                <mat-checkbox formControlName="category3"
+                  >Durere si inflamatii</mat-checkbox
+                >
               </p>
             </section>
           </mat-expansion-panel>
@@ -56,19 +85,15 @@
             <mat-expansion-panel-header>
               <mat-panel-title> Brand </mat-panel-title>
             </mat-expansion-panel-header>
-            <section class="example-section" [formGroup]="toppings">
+            <section class="example-section" [formGroup]="brand">
               <p>
-                <mat-checkbox formControlName="pepperoni"
-                  >Pepperoni</mat-checkbox
-                >
+                <mat-checkbox formControlName="brand1">Zentiva</mat-checkbox>
               </p>
               <p>
-                <mat-checkbox formControlName="extracheese"
-                  >Extra Cheese</mat-checkbox
-                >
+                <mat-checkbox formControlName="brand2">Bayer</mat-checkbox>
               </p>
               <p>
-                <mat-checkbox formControlName="mushroom">Mushroom</mat-checkbox>
+                <mat-checkbox formControlName="brand3">Biofarm</mat-checkbox>
               </p>
             </section>
           </mat-expansion-panel>
@@ -81,19 +106,17 @@
             <mat-expansion-panel-header>
               <mat-panel-title> Pret </mat-panel-title>
             </mat-expansion-panel-header>
-            <section class="example-section" [formGroup]="toppings">
+            <section class="example-section" [formGroup]="price">
               <p>
-                <mat-checkbox formControlName="pepperoni"
-                  >Pepperoni</mat-checkbox
+                <mat-checkbox formControlName="price1"> < 50 RON</mat-checkbox>
+              </p>
+              <p>
+                <mat-checkbox formControlName="price2"
+                  >50 - 100 RON</mat-checkbox
                 >
               </p>
               <p>
-                <mat-checkbox formControlName="extracheese"
-                  >Extra Cheese</mat-checkbox
-                >
-              </p>
-              <p>
-                <mat-checkbox formControlName="mushroom">Mushroom</mat-checkbox>
+                <mat-checkbox formControlName="price3">> 100 RON</mat-checkbox>
               </p>
             </section>
           </mat-expansion-panel>
@@ -101,230 +124,20 @@
       </div>
       <div class="content-view">
         <div class="products">
-          <div class="product">
+          <div *ngFor="let prod of products" class="product">
             <div class="chips">
               <div class="in-stock">In Stoc</div>
-              <mat-icon
-                *ngIf="!isClick"
-                (click)="isClick = !isClick"
-                class="product-fav"
-                >favorite_outlined</mat-icon
-              >
-              <mat-icon
-                *ngIf="isClick"
-                (click)="isClick = !isClick"
-                class="product-fav"
-                >favorite</mat-icon
-              >
             </div>
-
-            <img
-              class="product-img"
-              src="../../../../assets/nurofen.jpg"
-              alt=""
-            />
-            <div class="name">Paracetamol</div>
-            <div class="price">150 lei</div>
+            <img class="product-img" [src]="buildProductPicture(prod.img)" />
+            <div class="name">{{ prod.productName }}</div>
+            <div class="price">{{ prod.price }}lei</div>
             <div class="btn-container">
-              <button class="add-btn" mat-button>Adauga in cos</button>
+              <button class="add-btn" (click)="addToCart(prod)" mat-button>
+                Adauga in cos
+              </button>
             </div>
           </div>
-          <div class="product">
-            <div class="chips">
-              <div class="in-stock">In Stoc</div>
-              <mat-icon
-                *ngIf="!isClick"
-                (click)="isClick = !isClick"
-                class="product-fav"
-                >favorite_outlined</mat-icon
-              >
-              <mat-icon
-                *ngIf="isClick"
-                (click)="isClick = !isClick"
-                class="product-fav"
-                >favorite</mat-icon
-              >
-            </div>
 
-            <img
-              class="product-img"
-              src="../../../../assets/nurofen.jpg"
-              alt=""
-            />
-            <div class="name">Paracetamol</div>
-            <div class="price">150 lei</div>
-            <div class="btn-container">
-              <button class="add-btn" mat-button>Adauga in cos</button>
-            </div>
-          </div>
-          <div class="product">
-            <div class="chips">
-              <div class="in-stock">In Stoc</div>
-              <mat-icon
-                *ngIf="!isClick"
-                (click)="isClick = !isClick"
-                class="product-fav"
-                >favorite_outlined</mat-icon
-              >
-              <mat-icon
-                *ngIf="isClick"
-                (click)="isClick = !isClick"
-                class="product-fav"
-                >favorite</mat-icon
-              >
-            </div>
-
-            <img
-              class="product-img"
-              src="../../../../assets/nurofen.jpg"
-              alt=""
-            />
-            <div class="name">Paracetamol</div>
-            <div class="price">150 lei</div>
-            <div class="btn-container">
-              <button class="add-btn" mat-button>Adauga in cos</button>
-            </div>
-          </div>
-          <div class="product">
-            <div class="chips">
-              <div class="in-stock">In Stoc</div>
-              <mat-icon
-                *ngIf="!isClick"
-                (click)="isClick = !isClick"
-                class="product-fav"
-                >favorite_outlined</mat-icon
-              >
-              <mat-icon
-                *ngIf="isClick"
-                (click)="isClick = !isClick"
-                class="product-fav"
-                >favorite</mat-icon
-              >
-            </div>
-
-            <img
-              class="product-img"
-              src="../../../../assets/nurofen.jpg"
-              alt=""
-            />
-            <div class="name">Paracetamol</div>
-            <div class="price">150 lei</div>
-            <div class="btn-container">
-              <button class="add-btn" mat-button>Adauga in cos</button>
-            </div>
-          </div>
-          <div class="product">
-            <div class="chips">
-              <div class="in-stock">In Stoc</div>
-              <mat-icon
-                *ngIf="!isClick"
-                (click)="isClick = !isClick"
-                class="product-fav"
-                >favorite_outlined</mat-icon
-              >
-              <mat-icon
-                *ngIf="isClick"
-                (click)="isClick = !isClick"
-                class="product-fav"
-                >favorite</mat-icon
-              >
-            </div>
-
-            <img
-              class="product-img"
-              src="../../../../assets/nurofen.jpg"
-              alt=""
-            />
-            <div class="name">Paracetamol</div>
-            <div class="price">150 lei</div>
-            <div class="btn-container">
-              <button class="add-btn" mat-button>Adauga in cos</button>
-            </div>
-          </div>
-          <div class="product">
-            <div class="chips">
-              <div class="in-stock">In Stoc</div>
-              <mat-icon
-                *ngIf="!isClick"
-                (click)="isClick = !isClick"
-                class="product-fav"
-                >favorite_outlined</mat-icon
-              >
-              <mat-icon
-                *ngIf="isClick"
-                (click)="isClick = !isClick"
-                class="product-fav"
-                >favorite</mat-icon
-              >
-            </div>
-
-            <img
-              class="product-img"
-              src="../../../../assets/nurofen.jpg"
-              alt=""
-            />
-            <div class="name">Paracetamol</div>
-            <div class="price">150 lei</div>
-            <div class="btn-container">
-              <button class="add-btn" mat-button>Adauga in cos</button>
-            </div>
-          </div>
-          <div class="product">
-            <div class="chips">
-              <div class="in-stock">In Stoc</div>
-              <mat-icon
-                *ngIf="!isClick"
-                (click)="isClick = !isClick"
-                class="product-fav"
-                >favorite_outlined</mat-icon
-              >
-              <mat-icon
-                *ngIf="isClick"
-                (click)="isClick = !isClick"
-                class="product-fav"
-                >favorite</mat-icon
-              >
-            </div>
-
-            <img
-              class="product-img"
-              src="../../../../assets/nurofen.jpg"
-              alt=""
-            />
-            <div class="name">Paracetamol</div>
-            <div class="price">150 lei</div>
-            <div class="btn-container">
-              <button class="add-btn" mat-button>Adauga in cos</button>
-            </div>
-          </div>
-          <div class="product">
-            <div class="chips">
-              <div class="in-stock">In Stoc</div>
-              <mat-icon
-                *ngIf="!isClick"
-                (click)="isClick = !isClick"
-                class="product-fav"
-                >favorite_outlined</mat-icon
-              >
-              <mat-icon
-                *ngIf="isClick"
-                (click)="isClick = !isClick"
-                class="product-fav"
-                >favorite</mat-icon
-              >
-            </div>
-
-            <img
-              class="product-img"
-              src="../../../../assets/nurofen.jpg"
-              alt=""
-            />
-            <div class="name">Paracetamol</div>
-            <div class="price">150 lei</div>
-            <div class="btn-container">
-              <button class="add-btn" mat-button>Adauga in cos</button>
-            </div>
-          </div>
           <div class="paginator">
             <mat-paginator
               [length]="100"
