@@ -17,6 +17,15 @@ router.get("/top-doctors", auth, async (req, res) => {
     res.status(500).send("Server error");
   }
 });
+router.get("/all-doctors", auth, async (req, res) => {
+  try {
+    const doctorsProfiles = await Doctor.find();
+    res.json({ doctorsProfiles: doctorsProfiles });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
 // router.patch("/add-appointement/:doctorId", auth, async (req, res) => {
 //   try {
 //     const doctorsProfiles = await Doctor.find();

@@ -50,12 +50,34 @@ export class AppointmentsComponent implements OnInit {
       });
   }
   onSearch() {
-    console.log('search');
+    this.dataSource.filter = this.searchText.trim().toLowerCase();
   }
   onSearchInput(event: any) {
-    console.log('search input');
+    this.dataSource.filter = this.searchText.trim().toLowerCase();
   }
   onAddAppointement() {
     this.router.navigate(['/add-appointement']);
+  }
+  deleteAppointement(elem: any) {
+    this.apiService.deleteAppointement(elem._id).subscribe((response) => {
+      this.honoredAppointements = 0;
+      this.futureAppointements = 0;
+      this.unfulfilledAppointemets = 0;
+      this.apiService
+        .getAppointements(this.currentUserId)
+        .subscribe((resp: any) => {
+          this.dataSource = new MatTableDataSource(resp.appointements);
+          console.log('response', response);
+          resp.appointements.forEach((element: any) => {
+            if (element.state === 'viitoare') {
+              this.futureAppointements++;
+            } else if (element.state === 'onorata') {
+              this.honoredAppointements++;
+            } else {
+              this.unfulfilledAppointemets++;
+            }
+          });
+        });
+    });
   }
 }

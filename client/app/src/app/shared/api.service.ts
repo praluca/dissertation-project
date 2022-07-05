@@ -31,6 +31,11 @@ export class ApiService {
     return this.http.get(url, { headers: this.headers });
   }
 
+  getAllDoctors() {
+    const url = 'http://localhost:3000/api/doctors/all-doctors';
+    return this.http.get(url, { headers: this.headers });
+  }
+
   getConsultations(id: any) {
     const url = 'http://localhost:3000/api/consultations/' + id;
     return this.http.get(url, { headers: this.headers });
@@ -38,6 +43,11 @@ export class ApiService {
 
   deleteConsultation(id: any) {
     const url = 'http://localhost:3000/api/consultations/' + id;
+    return this.http.delete(url, { headers: this.headers });
+  }
+
+  deleteAppointement(id: any) {
+    const url = 'http://localhost:3000/api/appointements/' + id;
     return this.http.delete(url, { headers: this.headers });
   }
 

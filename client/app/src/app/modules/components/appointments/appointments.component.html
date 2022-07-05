@@ -83,7 +83,9 @@
             <mat-icon>settings</mat-icon>
           </th>
           <td mat-cell *matCellDef="let element">
-            <mat-icon class="delete-icon">delete</mat-icon>
+            <mat-icon class="delete-icon" (click)="deleteAppointement(element)"
+              >delete</mat-icon
+            >
           </td>
         </ng-container>
 

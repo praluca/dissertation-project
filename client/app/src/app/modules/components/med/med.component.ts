@@ -12,7 +12,7 @@ export class MedComponent implements OnInit {
   constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit(): void {
-    this.apiService.getTop4Doctors().subscribe((response: any) => {
+    this.apiService.getAllDoctors().subscribe((response: any) => {
       this.doctors = response.doctorsProfiles;
     });
   }

@@ -26,4 +26,9 @@ export class TopMenuComponent implements OnInit {
   onDisplayMeds() {
     this.router.navigate(['/med']);
   }
+  logout() {
+    this.localStorageService.remove('x-auth-token');
+    this.localStorageService.remove('user');
+    this.router.navigate(['/main-page']);
+  }
 }
