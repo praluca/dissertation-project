@@ -18,6 +18,11 @@ export class ShopComponent implements OnInit {
     category2: false,
     category3: false,
   });
+  categoryMap = [
+    { category1: 'raceala' },
+    { category2: 'raceala2' },
+    { category3: 'raceala3' },
+  ];
   brand = this._formBuilder.group({
     brand1: false,
     brand2: false,
@@ -37,18 +42,107 @@ export class ShopComponent implements OnInit {
     private apiService: ApiService,
     private _sanitizer: DomSanitizer
   ) {}
-
+  initialProducts: any = [];
+  initialProducts2: any = [];
+  initialProducts3: any = [];
   ngOnInit(): void {
     this.apiService.getProducts().subscribe((response: any) => {
       console.log('resp', response.products);
       this.products = response.products;
+      this.initialProducts = response.products;
+    });
+    this.category.valueChanges.subscribe((response) => {
+      console.log('RESPPP', response);
+      if (
+        response.category1 === true ||
+        response.category2 === true ||
+        response.category3 === true
+      ) {
+        this.products = this.products.filter((elem: any) =>
+          response.category1 === true
+            ? elem.category === 'raceala'
+            : response.category2 === true
+            ? elem.category === 'raceala2'
+            : response.category3 === true
+            ? elem.category === 'raceala3'
+            : elem.category === 'raceala' &&
+              elem.category === 'raceala2' &&
+              elem.category === 'raceala3'
+        );
+      } else if (
+        response.category1 === false &&
+        response.category2 === false &&
+        response.category3 === false
+      ) {
+        this.products = this.initialProducts;
+      }
+      this.initialProducts2 = this.products;
+    });
+
+    this.brand.valueChanges.subscribe((response) => {
+      if (
+        response.brand1 === true ||
+        response.brand2 === true ||
+        response.brand3 === true
+      ) {
+        this.products = this.products.filter((elem: any) =>
+          response.brand1 === true
+            ? elem.brand === 'Pharma'
+            : response.brand2 === true
+            ? elem.brand === 'Pharma2'
+            : response.brand3 === true
+            ? elem.brand === 'Pharma3'
+            : elem.brand === 'Pharma' &&
+              elem.brand === 'Pharma2' &&
+              elem.brand === 'Pharma3'
+        );
+      } else if (
+        response.brand1 === false &&
+        response.brand2 === false &&
+        response.brand3 === false
+      ) {
+        this.products = this.initialProducts2;
+      }
+      this.initialProducts3 = this.products;
+    });
+    this.price.valueChanges.subscribe((response) => {
+      if (
+        response.price1 === true ||
+        response.price2 === true ||
+        response.price3 === true
+      ) {
+        this.products = this.products.filter((elem: any) =>
+          response.price1 === true
+            ? elem.price < 50
+            : response.price2 === true
+            ? elem.price >= 50 && elem.price < 100
+            : response.price3 === true
+            ? elem.price > 100
+            : elem.price <= 50 && elem.price > 50
+        );
+      } else if (
+        response.price1 === false &&
+        response.price2 === false &&
+        response.price3 === false
+      ) {
+        this.products = this.initialProducts3;
+      }
     });
   }
   onSearch() {
     console.log('search');
   }
   onSearchInput(event: any) {
-    console.log('search input');
+    console.log(event);
+    if (event.target.value.length > 3) {
+      this.products = this.products.filter((elem: any) =>
+        elem.productName
+          .toLowerCase()
+          .includes(event.target.value.toLowerCase())
+      );
+    } else {
+      this.products = this.initialProducts;
+    }
   }
   buildProductPicture(picture: string) {
     let imagePath = this._sanitizer.bypassSecurityTrustResourceUrl(
@@ -62,6 +156,10 @@ export class ShopComponent implements OnInit {
   cartProducts: any = [];
   removeItem(index: any) {
     this.cartProducts.splice(index, 1);
+    this.items = [];
+    this.cartProducts.forEach((elem: any) => {
+      this.items.push({ price: elem.product.priceId, quantity: elem.quantity });
+    });
   }
   items: any = [];
   addToCart(prod: any) {

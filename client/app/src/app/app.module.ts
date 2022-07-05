@@ -31,6 +31,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
 import { InlineSVGModule } from 'ng-inline-svg';
 import { StripePaymentComponent } from './shared/stripe-payment/stripe-payment.component';
+import { RoomComponent } from './room/room.component';
+import { SocketIoModule } from 'ngx-socket-io';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { StripePaymentComponent } from './shared/stripe-payment/stripe-payment.c
     AddAppointementComponent,
     ConfirmationDialogComponent,
     StripePaymentComponent,
+    RoomComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,6 +74,9 @@ import { StripePaymentComponent } from './shared/stripe-payment/stripe-payment.c
     MatDatepickerModule,
     MatNativeDateModule,
     InlineSVGModule,
+    SocketIoModule.forRoot({
+      url: '/',
+    }),
   ],
   providers: [MatDatepickerModule, MatNativeDateModule],
   bootstrap: [AppComponent],

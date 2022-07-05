@@ -90,4 +90,13 @@ export class ApiService {
     const url = 'http://localhost:3000/api/products';
     return this.http.get(url, { headers: this.headers });
   }
+
+  getProductsFiltered(filter: any) {
+    const url = 'http://localhost:3000/api/products/filtered';
+    return this.http.get(url, {
+      params: {
+        filter: filter,
+      },
+    });
+  }
 }

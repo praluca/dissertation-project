@@ -10,6 +10,7 @@ import { PaymentsComponent } from './modules/components/payments/payments.compon
 import { RegisterComponent } from './modules/components/register/register.component';
 import { ShopComponent } from './modules/components/shop/shop.component';
 import { VitalInformationsComponent } from './modules/components/vital-informations/vital-informations.component';
+import { RoomComponent } from './room/room.component';
 
 const routes: Routes = [
   { path: 'main-page', component: MainPageComponent },
@@ -22,6 +23,10 @@ const routes: Routes = [
   { path: 'vital-informations', component: VitalInformationsComponent },
   { path: 'shop', component: ShopComponent },
   { path: 'add-appointement', component: AddAppointementComponent },
+  {
+    path: 'room',
+    component: RoomComponent,
+  },
 ];
 
 @NgModule({

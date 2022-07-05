@@ -4,8 +4,41 @@
   <div>
     <div *ngIf="currentURL === '/home'">
       <div class="content">
-        <div></div>
-        <div class="title">DOCTORI</div>
+        <div>
+          <div class="title">PROGRAMARI VIITOARE</div>
+          <div class="top-doctors-list">
+            <div *ngFor="let app of futureAppointements" class="doctor-info">
+              <div class="top-info">
+                <img
+                  class="profile-img"
+                  src="../../../../assets/img4.jpg"
+                  alt=""
+                />
+                <div class="doctor-name">Dr.{{ app.doctorName }}</div>
+              </div>
+              <div class="info-section">
+                <div class="low-title">Specializare</div>
+                <div class="specialization">{{ app.specialisation }}</div>
+              </div>
+              <div class="info-section">
+                <div class="low-title">Data</div>
+                <div class="specialization">
+                  {{ app.date }} - {{ app.hour }}
+                </div>
+              </div>
+              <div class="btn-container">
+                <button
+                  class="btn-appointement"
+                  (click)="goToRoom()"
+                  mat-button
+                >
+                  Participa Programare
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="title title-1">DOCTORI</div>
         <div class="top-doctors-list">
           <div *ngFor="let doctor of doctors" class="doctor-info">
             <div class="top-info">
@@ -25,7 +58,11 @@
               <div class="specialization">{{ doctor.review }}/10</div>
             </div>
             <div class="btn-container">
-              <button class="btn-appointement" mat-button>
+              <button
+                class="btn-appointement"
+                (click)="goToAppointements()"
+                mat-button
+              >
                 Solicita Programare
               </button>
             </div>
