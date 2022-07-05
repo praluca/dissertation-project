@@ -1,0 +1,32 @@
+<app-top-menu></app-top-menu>
+<div class="home-content">
+  <app-navbar></app-navbar>
+  <div class="main-content">
+    <div class="title">DOCTORI</div>
+    <div class="top-doctors-list">
+      <div *ngFor="let doctor of doctors" class="doctor-info">
+        <div class="top-info">
+          <img class="profile-img" src="../../../../assets/img4.jpg" alt="" />
+          <div class="doctor-name">Dr.{{ doctor.name }}</div>
+        </div>
+        <div class="info-section">
+          <div class="low-title">Specializare</div>
+          <div class="specialization">{{ doctor.specialisation }}</div>
+        </div>
+        <div class="info-section">
+          <div class="low-title">Nota</div>
+          <div class="specialization">{{ doctor.review }}/10</div>
+        </div>
+        <div class="btn-container">
+          <button
+            class="btn-appointement"
+            (click)="goToAppointements()"
+            mat-button
+          >
+            Solicita Programare
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

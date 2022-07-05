@@ -33,6 +33,9 @@ import { InlineSVGModule } from 'ng-inline-svg';
 import { StripePaymentComponent } from './shared/stripe-payment/stripe-payment.component';
 import { RoomComponent } from './room/room.component';
 import { SocketIoModule } from 'ngx-socket-io';
+import { SubscriptionComponent } from './modules/components/subscription/subscription.component';
+import { SpecialitiesComponent } from './modules/components/specialities/specialities.component';
+import { MedComponent } from './modules/components/med/med.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +57,9 @@ import { SocketIoModule } from 'ngx-socket-io';
     ConfirmationDialogComponent,
     StripePaymentComponent,
     RoomComponent,
+    SubscriptionComponent,
+    SpecialitiesComponent,
+    MedComponent,
   ],
   imports: [
     BrowserModule,

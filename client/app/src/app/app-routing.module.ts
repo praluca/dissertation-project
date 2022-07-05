@@ -6,11 +6,13 @@ import { ConsultationsComponent } from './modules/components/consultations/consu
 import { HomeComponent } from './modules/components/home/home.component';
 import { LoginComponent } from './modules/components/login/login.component';
 import { MainPageComponent } from './modules/components/main-page/main-page.component';
+import { MedComponent } from './modules/components/med/med.component';
 import { PaymentsComponent } from './modules/components/payments/payments.component';
 import { RegisterComponent } from './modules/components/register/register.component';
 import { ShopComponent } from './modules/components/shop/shop.component';
+import { SpecialitiesComponent } from './modules/components/specialities/specialities.component';
+import { SubscriptionComponent } from './modules/components/subscription/subscription.component';
 import { VitalInformationsComponent } from './modules/components/vital-informations/vital-informations.component';
-import { RoomComponent } from './room/room.component';
 
 const routes: Routes = [
   { path: 'main-page', component: MainPageComponent },
@@ -24,8 +26,16 @@ const routes: Routes = [
   { path: 'shop', component: ShopComponent },
   { path: 'add-appointement', component: AddAppointementComponent },
   {
-    path: 'room',
-    component: RoomComponent,
+    path: 'subscription',
+    component: SubscriptionComponent,
+  },
+  {
+    path: 'specialities',
+    component: SpecialitiesComponent,
+  },
+  {
+    path: 'med',
+    component: MedComponent,
   },
 ];
 

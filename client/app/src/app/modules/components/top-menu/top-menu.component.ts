@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/shared/local-storage.service';
 
 @Component({
@@ -8,9 +9,21 @@ import { LocalStorageService } from 'src/app/shared/local-storage.service';
 })
 export class TopMenuComponent implements OnInit {
   currentUserName = '';
-  constructor(private localStorageService: LocalStorageService) {}
+  constructor(
+    private localStorageService: LocalStorageService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.currentUserName = this.localStorageService.get('user').name;
+  }
+  onDisplaySubscriptions() {
+    this.router.navigate(['/subscription']);
+  }
+  onDisplaySpecialities() {
+    this.router.navigate(['/specialities']);
+  }
+  onDisplayMeds() {
+    this.router.navigate(['/med']);
   }
 }

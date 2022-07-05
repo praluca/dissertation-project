@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { RoomComponent } from 'src/app/room/room.component';
 import { ApiService } from 'src/app/shared/api.service';
 import { LocalStorageService } from 'src/app/shared/local-storage.service';
 // import uuidv4 from 'uuid/dist/v4';
@@ -18,7 +20,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
     private apiService: ApiService,
-    private localStorage: LocalStorageService
+    private localStorage: LocalStorageService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -42,6 +45,10 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/add-appointement']);
   }
   goToRoom() {
-    this.router.navigate(['/room']);
+    // this.router.navigate(['/room']);
+    this.dialog.open(RoomComponent, {
+      height: '550px',
+      width: '750px',
+    });
   }
 }
