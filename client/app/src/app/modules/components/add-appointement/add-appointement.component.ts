@@ -14,12 +14,12 @@ export class AddAppointementComponent implements OnInit {
   selectedLocation: any;
   selectedDateValue: any;
   specialisations: any = [
-    { value: 'chirurgie', viewValue: 'CHIRURGIE' },
-    { value: 'pediatrie', viewValue: 'PEDIATRIE' },
-    { value: 'psihologie', viewValue: 'PSIHOLOGIE' },
-    { value: 'cardiologie', viewValue: 'CARDIOLOGIE' },
-    { value: 'radiologie', viewValue: 'RADIOLOGIE' },
-    { value: 'ecografie', viewValue: 'ECOGRAFIE' },
+    { value: 'Chirurgie', viewValue: 'CHIRURGIE' },
+    { value: 'Pediatrie', viewValue: 'PEDIATRIE' },
+    { value: 'Psihologie', viewValue: 'PSIHOLOGIE' },
+    { value: 'Cardiologie', viewValue: 'CARDIOLOGIE' },
+    { value: 'Radiologie', viewValue: 'RADIOLOGIE' },
+    { value: 'Ecografie', viewValue: 'ECOGRAFIE' },
   ];
   locations: any = [{ value: 'virtual', viewValue: 'CLINICA VIRTUALA' }];
   myFilter = (d: Date | null): boolean => {

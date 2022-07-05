@@ -60,14 +60,14 @@ export class ShopComponent implements OnInit {
       ) {
         this.products = this.products.filter((elem: any) =>
           response.category1 === true
-            ? elem.category === 'raceala'
+            ? elem.category === 'inima'
             : response.category2 === true
-            ? elem.category === 'raceala2'
+            ? elem.category === 'raceala'
             : response.category3 === true
-            ? elem.category === 'raceala3'
+            ? elem.category === 'durere'
             : elem.category === 'raceala' &&
-              elem.category === 'raceala2' &&
-              elem.category === 'raceala3'
+              elem.category === 'inima' &&
+              elem.category === 'durere'
         );
       } else if (
         response.category1 === false &&
@@ -89,12 +89,12 @@ export class ShopComponent implements OnInit {
           response.brand1 === true
             ? elem.brand === 'Pharma'
             : response.brand2 === true
-            ? elem.brand === 'Pharma2'
+            ? elem.brand === 'Bayer'
             : response.brand3 === true
-            ? elem.brand === 'Pharma3'
+            ? elem.brand === 'Biofarm'
             : elem.brand === 'Pharma' &&
-              elem.brand === 'Pharma2' &&
-              elem.brand === 'Pharma3'
+              elem.brand === 'Bayer' &&
+              elem.brand === 'Biofarm'
         );
       } else if (
         response.brand1 === false &&
