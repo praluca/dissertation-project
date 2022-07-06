@@ -19,7 +19,6 @@ export class AddAppointementComponent implements OnInit {
     { value: 'Psihologie', viewValue: 'PSIHOLOGIE' },
     { value: 'Cardiologie', viewValue: 'CARDIOLOGIE' },
     { value: 'Radiologie', viewValue: 'RADIOLOGIE' },
-    { value: 'Ecografie', viewValue: 'ECOGRAFIE' },
   ];
   locations: any = [{ value: 'virtual', viewValue: 'CLINICA VIRTUALA' }];
   myFilter = (d: Date | null): boolean => {

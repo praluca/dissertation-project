@@ -197,7 +197,7 @@ export class ShopComponent implements OnInit {
     const { error } = await stripe!.redirectToCheckout({
       mode: 'payment',
       lineItems: this.items,
-      successUrl: `${window.location.href}/shop`,
+      successUrl: 'http://localhost:4200/shop',
       cancelUrl: `${window.location.href}/failure`,
     });
 
